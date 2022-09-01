@@ -9,7 +9,7 @@
 
 body {
   padding: 20px 25px;
-  color: rgba(15, 20, 25, 1.0) !important;
+  color: rgba(15, 20, 25, 1.0);
   background-color: rgba(255, 255, 255, 1.0);
 }
 
@@ -22,7 +22,7 @@ ol, ul {
 }
 
 /* Menu de navegação e menu do feed */
-#navigation-menu #navigation-menu-list .navigation-menu-item img {
+#navigation-menu #navigation-menu-list .navigation-menu-item > img {
   width: 12px;
   height: 12px;
   margin-right: 15px;
@@ -31,19 +31,18 @@ ol, ul {
 #feed-container #feed-options {
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 }
 
-#feed-container #feed-options .feed-options-item a,
-#navigation-menu #navigation-menu-list .navigation-menu-item a {
+#feed-container #feed-options .feed-options-item > a,
+#navigation-menu #navigation-menu-list .navigation-menu-item > a {
   display: flex;
   padding: 5px 10px;
   color: rgba(15, 20, 25, 1.0);
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
-#feed-container #feed-options .feed-options-item a:hover,
-#navigation-menu #navigation-menu-list .navigation-menu-item a:hover {
+#feed-container #feed-options .feed-options-item > a:hover,
+#navigation-menu #navigation-menu-list .navigation-menu-item > a:hover {
   border-radius: 20px;
   border: 1px solid transparent;
   background-color: rgba(15, 25, 20, 0.1);
@@ -56,6 +55,10 @@ ol, ul {
   color: rgba(15, 20, 25, 1.0);
 }
 
+#profile-info > ul:first-child {
+  margin-bottom: 10px;
+}
+
 #profile-info #profile-info-statistics {
   display: flex;
 }
@@ -65,10 +68,10 @@ ol, ul {
 }
 
 #profile-info #profile-info-statistics .profile-info-item:last-child {
-  margin-right: 0 !important;
+  margin-right: 0;
 }
 
-#profile-info #profile-info-statistics .profile-info-item a {
+#profile-info #profile-info-statistics .profile-info-item > a {
   display: flex;
   text-decoration: none;
 }
@@ -77,7 +80,7 @@ ol, ul {
   text-decoration: underline;
 }
 
-#profile-info #profile-info-statistics .profile-info-item a h5 {
+#profile-info #profile-info-statistics .profile-info-item > a h5 {
   margin-right: 5px;
   font-weight: bold;
   color: rgba(15, 20, 25, 1.0);
@@ -91,17 +94,23 @@ ol, ul {
   margin-right: 10px;
 }
 
-#profile-info #profile-info-location-date .profile-info-item a {
+#profile-info #profile-info-location-date .profile-info-item > a {
   text-decoration: none;
   color: rgba(83, 100, 113, 1.0);
 }
 
-.tzeet-container .tzeet-user-info span,
+.tzeet-container .tzeet-user-info > span,
 .tzeet-container .tzeet-user-info .user-name,
 #profile #user-info .user-name,
 #profile-info #profile-info-location-date .profile-info-item,
-#profile-info #profile-info-statistics .profile-info-item a p {
+#profile-info #profile-info-statistics .profile-info-item > a p {
   color: rgba(83, 100, 113, 1.0);
+}
+
+#edit-profile-button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Tzeets */
@@ -119,9 +128,9 @@ ol, ul {
   align-items: center;
 }
 
-.tzeet-container .tzeet-user-info p,
-.tzeet-container .tzeet-user-info a,
-.tzeet-container .tzeet-user-info img {
+.tzeet-container .tzeet-user-info > p,
+.tzeet-container .tzeet-user-info > a,
+.tzeet-container .tzeet-user-info > img {
   margin-right: 10px;
 }
 
@@ -140,29 +149,33 @@ ol, ul {
   justify-content: space-around;
 }
 
-.tzeet-container .actions .actions-item a {
+.tzeet-container .actions .actions-item > a {
   padding: 5px 10px;
   text-decoration: none;
   color: rgba(83, 100, 113, 1.0);
 }
 
-.tzeet-container .actions .actions-item a:hover {
+.tzeet-container .actions .actions-item > a:hover {
   border-radius: 20px;
   border: 1px solid transparent;
 }
 
-.tzeet-container .actions .share a:hover,
-.tzeet-container .actions .reply a:hover {
+.tzeet-container .actions .share > a:hover,
+.tzeet-container .actions .reply > a:hover {
   color: rgba(29, 155, 240, 1.0);
   background-color: rgba(29, 155, 240, 0.1);
 }
 
-.tzeet-container .actions .retzeet a:hover {
+.tzeet-container .actions .retzeet > a:hover {
   color: rgba(0, 186, 124, 1.0);
   background-color: rgba(0, 186, 124, 0.1);
 }
 
-.tzeet-container .actions .like a:hover {
+.tzeet-container .actions .like > a:hover {
   color: rgba(249, 24, 128, 1.0);
   background-color: rgba(249, 24, 128, 0.1);
+}
+
+.margin-top-bottom {
+  margin: 15px 0;
 }

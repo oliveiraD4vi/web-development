@@ -24,6 +24,10 @@ ol, ul {
   list-style: none;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
 /* Menu de navegação e menu do feed */
 #navigation-menu #navigation-menu-list {
   padding: 0;
@@ -73,6 +77,12 @@ ol, ul {
   color: rgba(15, 20, 25, 1.0);
 }
 
+#profile #profile-button {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 #profile-info > ul:first-child {
   margin-bottom: 10px;
 }
@@ -89,9 +99,18 @@ ol, ul {
   margin-right: 0;
 }
 
-#profile-info #profile-info-statistics .profile-info-item > a {
+.profile-info-item > a {
   display: flex;
+  align-items: center;
   text-decoration: none;
+}
+
+.profile-info-item > a h5 {
+  margin: 0;
+}
+
+#profile-info .profile-info-item a > p {
+  margin: 0;
 }
 
 #profile-info #profile-info-statistics .profile-info-item a:hover {
@@ -126,6 +145,8 @@ ol, ul {
 }
 
 #edit-profile-button {
+  align-self: flex-end;
+  height: 45px;
   padding: 5px 15px;
   border-radius: 5px;
   cursor: pointer;
@@ -138,7 +159,7 @@ ol, ul {
   flex-direction: column;
   padding: 10px 15px;
   border-radius: 5px;
-  border: 1px solid transparent;
+  border-top: 1px solid #d9d9d9;
 }
 
 .tzeet-container .tzeet-user-info {
@@ -191,4 +212,27 @@ ol, ul {
 .tzeet-container .actions .like > a:hover {
   color: rgba(249, 24, 128, 1.0);
   background-color: rgba(249, 24, 128, 0.1);
+}
+
+.container > main {
+  border-left: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+}
+
+.container .input-form {
+  background-color: #e9ecef;
+}
+
+.container .users-example {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+}
+
+.container .users-example .user {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 10px 0;
 }

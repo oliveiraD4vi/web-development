@@ -1,0 +1,56 @@
+/* Formulário de Tzeet */ 
+
+#tzeet-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#tzeet-form-container #tzeet-form-input {
+  width: 100%;
+}
+
+#tzeet-form-container > #reply-config {
+  display: flex;
+  align-items: center;
+}
+
+#tzeet-form-container > #reply-config:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  border-radius: 20px;
+}
+
+#tzeet-form-container > #reply-config svg {
+  margin-right: 5px;
+}
+
+#tzeet-form-container > #tzeet-form-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#tzeet-form-container > #tzeet-form-bottom #multimedia {
+  display: flex;
+  padding: 0;
+}
+
+#tzeet-form-container > #tzeet-form-bottom #multimedia .multimedia-icon {
+  margin: 0 5px;
+  padding: 5px;
+}
+
+#tzeet-form-container > #tzeet-form-bottom #multimedia .multimedia-icon a {
+  color: black;
+}
+
+#tzeet-form-container > #tzeet-form-bottom #multimedia .multimedia-icon:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  border-radius: 50%;
+}
+
+#tzeet-form-container > #tzeet-form-bottom #form-send {
+  display: flex;
+  align-items: center;
+}

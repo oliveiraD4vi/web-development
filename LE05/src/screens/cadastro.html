@@ -11,7 +11,7 @@
 <body>
   <div id="page-container">
     <div id="form-container">
-      <form onsubmit="event.preventDefault();">
+      <form>
         <h4>Crie uma conta</h4>
         <div class="mb-3">
           <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Nome">
@@ -35,15 +35,26 @@
           <span>Isso não será exibito publicamente. Confirme sua própria idade, mesmo se esta conta for de empresa, de um animal de estimação ou outros.</span>
 
           <div id="select-container">
-            <select id="month-select" class="form-select" aria-label="Default select example">
-              <option selected>Mês</option>
-            </select>
-            <select id="day-select" class="form-select" aria-label="Default select example">
-              <option selected>Dia</option>
-            </select>
-            <select id="year-select" class="form-select" aria-label="Default select example">
-              <option selected>Ano</option>
-            </select>
+            <div class="select-element">
+              <select id="month-select" class="form-select" aria-label="Default select example">
+                <option selected>Mês</option>
+              </select>
+              <div id="monthHelp" class="form-text"></div>
+            </div>
+
+            <div class="select-element">
+              <select id="day-select" class="form-select" aria-label="Default select example">
+                <option selected>Dia</option>
+              </select>
+              <div id="dayMonth" class="form-text"></div>
+            </div>
+
+            <div class="select-element">
+              <select id="year-select" class="form-select" aria-label="Default select example">
+                <option selected>Ano</option>
+              </select>
+              <div id="yearMonth" class="form-text"></div>
+            </div>
           </div>
         </div>
 
@@ -73,7 +84,7 @@
         </div>
         
         <div id="form-bottom">
-          <button type="submit" class="btn btn-primary">Fazer cadastro</button>
+          <button disabled id="submit-btn" type="submit" class="btn btn-primary">Fazer cadastro</button>
           <span id="link">
             Já tem uma conta? <a href="../screens/login.html">Faça login</a>
           </span>

@@ -54,6 +54,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #form-container form > #born-at #select-container {
   display: flex;
+  justify-content: space-between;
   padding: 10px 0 0 0;
 }
 
@@ -63,6 +64,11 @@ h1, h2, h3, h4, h5, h6, p {
 
 #form-container form > #terms-policy #radio-checks > .form-check {
   margin-right: 10px;
+}
+
+#form-container form > .select-element {
+  display: flex;
+  flex-direction: column;
 }
 
 #form-container #form-bottom {

@@ -65,3 +65,138 @@ filters();
 daySelect.addEventListener("change", () => filters());
 monthSelect.addEventListener("change", () => filters());
 yearSelect.addEventListener("change", () => filters());
+
+const nameContainer = document.getElementById("inputName");
+const emailContainer = document.getElementById("inputEmail");
+const passwordContainer = document.getElementById("inputPassword");
+const passwordConfirmContainer = document.getElementById("inputConfirmPassword");
+const checkYes = document.getElementById("flexRadioDefault1");
+const btnSubmit = document.getElementById("submit-btn");
+
+const validaNome = () => {
+  const nameHelp = document.getElementById("nameHelp");
+
+  if (nameContainer.value.length > 10) {
+    nameContainer.style.borderColor = "black";
+    nameHelp.innerText = null;
+    return true;
+  } else {
+    nameContainer.style.borderColor = "red";
+    nameHelp.style.color = "red";
+    nameHelp.innerText = "Nome inválido";
+    return false;
+  }
+};
+
+const validaEmail = () => {
+  const emailRegex = /\S+@\S+\.\S+/;
+  const emailHelp = document.getElementById("emailHelp");
+
+  if (emailRegex.test(emailContainer.value)) {
+    emailContainer.style.borderColor = "black";
+    emailHelp.innerText = null;
+    return true;
+  } else {
+    emailContainer.style.borderColor = "red";
+    emailHelp.style.color = "red";
+    emailHelp.innerText = "Email inválido";
+    return false;
+  }
+};
+
+const validaPassword = () => {
+  const passwordHelp = document.getElementById("passwordHelp");
+
+  if (passwordContainer.value.length > 6) {
+    passwordContainer.style.borderColor = "black";
+    passwordHelp.innerText = null;
+    return true;
+  } else {
+    passwordContainer.style.borderColor = "red";
+    passwordHelp.style.color = "red";
+    passwordHelp.innerText = "Senha inválido";
+    return false;
+  }
+};
+
+const validaConfirmPassword = () => {
+  const passwordHelp = document.getElementById("passwordConfirmHelp");
+
+  if (passwordConfirmContainer.value === passwordContainer.value) {
+    passwordConfirmContainer.style.borderColor = "black";
+    passwordHelp.innerText = null;
+    return true;
+  } else {
+    passwordConfirmContainer.style.borderColor = "red";
+    passwordHelp.style.color = "red";
+    passwordHelp.innerText = "A senha não confere!";
+    return false;
+  }
+};
+
+const validaBornAt = () => {
+  const monthHelp = document.getElementById("monthHelp");
+  const yearHelp = document.getElementById("yearMonth");
+  const dayHelp = document.getElementById("dayMonth");
+
+  if (monthSelect.options[monthSelect.selectedIndex].value != "Mês") {
+    monthSelect.style.borderColor = "black";
+    monthHelp.innerText = null;
+  } else {
+    monthSelect.style.borderColor = "red";
+    monthHelp.style.color = "red";
+    monthHelp.innerText = "Campo obrigatório";
+  }
+
+  if (yearSelect.options[yearSelect.selectedIndex].value != "Ano") {
+    yearSelect.style.borderColor = "black";
+    yearHelp.innerText = null;
+  } else {
+    yearSelect.style.borderColor = "red";
+    yearHelp.style.color = "red";
+    yearHelp.innerText = "Campo obrigatório";
+  }
+
+  if (daySelect.options[daySelect.selectedIndex].value != "Dia") {
+    daySelect.style.borderColor = "black";
+    dayHelp.innerText = null;
+  } else {
+    daySelect.style.borderColor = "red";
+    dayHelp.style.color = "red";
+    dayHelp.innerText = "Campo obrigatório";
+  }
+
+  if (monthSelect.options[monthSelect.selectedIndex].value != "Mês"
+    && yearSelect.options[yearSelect.selectedIndex].value != "Ano"
+    && daySelect.options[daySelect.selectedIndex].value != "Dia"
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const validaPolicy = () => {
+  return checkYes.checked;
+};
+
+const validar = () => {
+  if (
+    validaNome() && validaEmail() && validaPassword() &&
+    validaConfirmPassword() && validaBornAt() && validaPolicy()
+  ) {
+    btnSubmit.disabled = false;
+  } else {
+    btnSubmit.disabled = true;
+  }
+};
+
+nameContainer.addEventListener("input", validar);
+emailContainer.addEventListener("input", validar);
+passwordContainer.addEventListener("input", validar);
+passwordConfirmContainer.addEventListener("input", validar);
+checkYes.addEventListener("input", validar);
+btnSubmit.addEventListener("click", validar);
+daySelect.addEventListener("click", validar);
+monthSelect.addEventListener("click", validar);
+yearSelect.addEventListener("click", validar);

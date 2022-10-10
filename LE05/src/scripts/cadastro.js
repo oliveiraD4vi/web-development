@@ -71,105 +71,69 @@ const emailContainer = document.getElementById("inputEmail");
 const passwordContainer = document.getElementById("inputPassword");
 const passwordConfirmContainer = document.getElementById("inputConfirmPassword");
 const checkYes = document.getElementById("flexRadioDefault1");
+const checkNo = document.getElementById("flexRadioDefault2");
 const btnSubmit = document.getElementById("submit-btn");
 
-const validaNome = () => {
-  const nameHelp = document.getElementById("nameHelp");
+const emailRegex = /\S+@\S+\.\S+/;
+const emailHelp = document.getElementById("emailHelp");
+const nameHelp = document.getElementById("nameHelp");
+const passwordHelp = document.getElementById("passwordHelp");
+const passwordConfirmHelp = document.getElementById("passwordConfirmHelp");
 
+const monthHelp = document.getElementById("monthHelp");
+const yearHelp = document.getElementById("yearMonth");
+const dayHelp = document.getElementById("dayMonth");
+
+const validaNome = () => {
   if (nameContainer.value.length > 10) {
-    nameContainer.style.borderColor = "black";
-    nameHelp.innerText = null;
     return true;
   } else {
-    nameContainer.style.borderColor = "red";
-    nameHelp.style.color = "red";
-    nameHelp.innerText = "Nome inválido";
     return false;
   }
 };
 
 const validaEmail = () => {
-  const emailRegex = /\S+@\S+\.\S+/;
-  const emailHelp = document.getElementById("emailHelp");
-
   if (emailRegex.test(emailContainer.value)) {
-    emailContainer.style.borderColor = "black";
-    emailHelp.innerText = null;
     return true;
   } else {
-    emailContainer.style.borderColor = "red";
-    emailHelp.style.color = "red";
-    emailHelp.innerText = "Email inválido";
     return false;
   }
 };
 
 const validaPassword = () => {
-  const passwordHelp = document.getElementById("passwordHelp");
-
   if (passwordContainer.value.length > 6) {
-    passwordContainer.style.borderColor = "black";
-    passwordHelp.innerText = null;
     return true;
   } else {
-    passwordContainer.style.borderColor = "red";
-    passwordHelp.style.color = "red";
-    passwordHelp.innerText = "Senha inválido";
     return false;
   }
 };
 
 const validaConfirmPassword = () => {
-  const passwordHelp = document.getElementById("passwordConfirmHelp");
-
   if (passwordConfirmContainer.value === passwordContainer.value) {
-    passwordConfirmContainer.style.borderColor = "black";
-    passwordHelp.innerText = null;
     return true;
   } else {
-    passwordConfirmContainer.style.borderColor = "red";
-    passwordHelp.style.color = "red";
-    passwordHelp.innerText = "A senha não confere!";
     return false;
   }
 };
 
-const validaBornAt = () => {
-  const monthHelp = document.getElementById("monthHelp");
-  const yearHelp = document.getElementById("yearMonth");
-  const dayHelp = document.getElementById("dayMonth");
-
-  if (monthSelect.options[monthSelect.selectedIndex].value != "Mês") {
-    monthSelect.style.borderColor = "black";
-    monthHelp.innerText = null;
-  } else {
-    monthSelect.style.borderColor = "red";
-    monthHelp.style.color = "red";
-    monthHelp.innerText = "Campo obrigatório";
-  }
-
-  if (yearSelect.options[yearSelect.selectedIndex].value != "Ano") {
-    yearSelect.style.borderColor = "black";
-    yearHelp.innerText = null;
-  } else {
-    yearSelect.style.borderColor = "red";
-    yearHelp.style.color = "red";
-    yearHelp.innerText = "Campo obrigatório";
-  }
-
+const validaDaySelect = () => {
   if (daySelect.options[daySelect.selectedIndex].value != "Dia") {
-    daySelect.style.borderColor = "black";
-    dayHelp.innerText = null;
+    return true;
   } else {
-    daySelect.style.borderColor = "red";
-    dayHelp.style.color = "red";
-    dayHelp.innerText = "Campo obrigatório";
+    return false;
   }
+};
 
-  if (monthSelect.options[monthSelect.selectedIndex].value != "Mês"
-    && yearSelect.options[yearSelect.selectedIndex].value != "Ano"
-    && daySelect.options[daySelect.selectedIndex].value != "Dia"
-  ) {
+const validaMonthSelect = () => {
+  if (monthSelect.options[monthSelect.selectedIndex].value != "Mês") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const validaYearSelect = () => {
+  if (yearSelect.options[yearSelect.selectedIndex].value != "Ano") {
     return true;
   } else {
     return false;
@@ -183,7 +147,8 @@ const validaPolicy = () => {
 const validar = () => {
   if (
     validaNome() && validaEmail() && validaPassword() &&
-    validaConfirmPassword() && validaBornAt() && validaPolicy()
+    validaDaySelect() && validaMonthSelect &&
+    validaYearSelect && validaPolicy()
   ) {
     btnSubmit.disabled = false;
   } else {
@@ -191,12 +156,94 @@ const validar = () => {
   }
 };
 
-nameContainer.addEventListener("input", validar);
-emailContainer.addEventListener("input", validar);
-passwordContainer.addEventListener("input", validar);
-passwordConfirmContainer.addEventListener("input", validar);
-checkYes.addEventListener("input", validar);
-btnSubmit.addEventListener("click", validar);
-daySelect.addEventListener("click", validar);
-monthSelect.addEventListener("click", validar);
-yearSelect.addEventListener("click", validar);
+checkNo.addEventListener("input", () => {
+  validar();
+});
+
+checkYes.addEventListener("input", () => {
+  validar();
+});
+
+nameContainer.addEventListener("input", () => {
+  if (validaNome()) {
+    nameContainer.style.borderColor = "black";
+    nameHelp.innerText = null;
+  } else {
+    nameContainer.style.borderColor = "red";
+    nameHelp.style.color = "red";
+    nameHelp.innerText = "Nome inválido";
+  }
+  validar();
+});
+
+emailContainer.addEventListener("input", () => {
+  if (validaEmail()) {
+    emailContainer.style.borderColor = "black";
+    emailHelp.innerText = null;
+  } else {
+    emailContainer.style.borderColor = "red";
+    emailHelp.style.color = "red";
+    emailHelp.innerText = "Email inválido";
+  }
+  validar();
+});
+
+passwordContainer.addEventListener("input", () => {
+  if (validaPassword()) {
+    passwordContainer.style.borderColor = "black";
+    passwordHelp.innerText = null;
+  } else {
+    passwordContainer.style.borderColor = "red";
+    passwordHelp.style.color = "red";
+    passwordHelp.innerText = "Senha inválido";
+  }
+  validar();
+});
+
+passwordConfirmContainer.addEventListener("input", () => {
+  if (validaConfirmPassword()) {
+    passwordConfirmContainer.style.borderColor = "black";
+    passwordConfirmHelp.innerText = null;
+  } else {
+    passwordConfirmContainer.style.borderColor = "red";
+    passwordConfirmHelp.style.color = "red";
+    passwordConfirmHelp.innerText = "A senha não confere!";
+  }
+  validar();
+});
+
+daySelect.addEventListener("click", () => {
+  if (validaDaySelect()) {
+    daySelect.style.borderColor = "black";
+    dayHelp.innerText = null;
+  } else {
+    daySelect.style.borderColor = "red";
+    dayHelp.style.color = "red";
+    dayHelp.innerText = "Campo obrigatório";
+  }
+  validar();
+});
+
+monthSelect.addEventListener("click", () => {
+  if (validaMonthSelect()) {
+    monthSelect.style.borderColor = "black";
+    monthHelp.innerText = null;
+  } else {
+    monthSelect.style.borderColor = "red";
+    monthHelp.style.color = "red";
+    monthHelp.innerText = "Campo obrigatório";
+  }
+  validar();
+});
+
+yearSelect.addEventListener("click", () => {
+  if (validaYearSelect()) {
+    yearSelect.style.borderColor = "black";
+    yearHelp.innerText = null;
+  } else {
+    yearSelect.style.borderColor = "red";
+    yearHelp.style.color = "red";
+    yearHelp.innerText = "Campo obrigatório";
+  }
+  validar();
+});

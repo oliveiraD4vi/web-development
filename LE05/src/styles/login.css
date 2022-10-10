@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #form-container {
-  max-width: 500px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +41,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #form-container form {
+  width: 100%;
   padding: 10px 0;
 }
 
